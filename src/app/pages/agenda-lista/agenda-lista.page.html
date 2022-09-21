@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons>
+      <ion-back-button defaulHref = ""></ion-back-button>
+      </ion-buttons>
+    <ion-title>Contatos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-list>
+      <ion-item *ngFor="let todosdados of todosdados" routerLink="/agenda-detalhes/{{todosdados.id}}">
+        <ion-label>{{todosdados.nome}}</ion-label>
+      </ion-item>
+    </ion-list>
+    
+    <ion-fab id="icon" vertical="top" horizontal="end" slot="fixed" edge="true">
+      <ion-fab-button routerLink="/agenda-detalhes/-1">
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+</ion-content>

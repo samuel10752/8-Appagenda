@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons>
+      <ion-back-button defaulHref = ""></ion-back-button>
+      </ion-buttons>
+    <ion-title>Detalhes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-item *ngIf="!modoDeEdicao" >Nome: {{contatoselecionado.nome}}</ion-item>
+  <ion-item *ngIf="!modoDeEdicao" >Celular: {{contatoselecionado.numero}}</ion-item>
+
+  <ion-button color="dark" shape="round" *ngIf="!modoDeEdicao" (click)="iniciarEdicao()" id="button" >Alterar Dados</ion-button>
+
+  <ion-fab id="icon" vertical="top" horizontal="end" slot="fixed" edge="true">
+    <ion-fab-button color="danger" (click)="deletarServico()" routerLink="/agenda-lista/">
+      <ion-icon name="trash"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+
+  <form *ngIf="modoDeEdicao" (ngSubmit)="encerrarEdicao()" >
+  
+    <ion-item>
+      <ion-label position="floating">Nome:</ion-label>
+      <ion-input [(ngModel)]="contatoselecionado.nome" name="nome"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Celular:</ion-label>
+      <ion-input [(ngModel)]="contatoselecionado.numero" name="numero" ></ion-input>
+    </ion-item>
+    
+    <ion-button color="dark" shape="round" routerLink="/agenda-lista/" type="submit" id="salvar">Salvar</ion-button>
+  </form>
+
+</ion-content>
