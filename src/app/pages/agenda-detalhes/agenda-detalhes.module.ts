@@ -7,9 +7,12 @@ import { IonicModule } from '@ionic/angular';
 import { AgendaDetalhesPageRoutingModule } from './agenda-detalhes-routing.module';
 
 import { AgendaDetalhesPage } from './agenda-detalhes.page';
+import { SimpleMaskModule } from 'ngx-ion-simple-mask';
+
 
 @NgModule({
   imports: [
+    SimpleMaskModule,
     CommonModule,
     FormsModule,
     IonicModule,

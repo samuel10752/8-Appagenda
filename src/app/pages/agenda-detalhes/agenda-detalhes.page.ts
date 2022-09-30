@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { AlertController } from '@ionic/angular';
 import { AgendaDadosService } from 'src/app/services/agenda-dados.service';
 
 @Component({
@@ -11,10 +13,13 @@ export class AgendaDetalhesPage implements OnInit {
 
   public contatoselecionado : any
   public modoDeEdicao = false
-
+  handlerMessage = '';
+  roleMessage = '';
+  
   constructor(
     private route : ActivatedRoute,
-    private agenda : AgendaDadosService
+    private agenda : AgendaDadosService,
+    private alertController: AlertController
 
   ) { }
 
@@ -45,12 +50,37 @@ export class AgendaDetalhesPage implements OnInit {
     this.contatoselecionado= {id , nome: "", numero: 0.0}
     this.modoDeEdicao= true
     }
+    
   }
 
 
   deletarServico(){
     this.agenda.deletaDados(this.contatoselecionado)
   }
+    async presentAlert() {
+    const alert = await this.alertController.create({
+      header: 'Alert!',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+            this.handlerMessage = 'Alert canceled';
+          },
+        },
+        {
+          text: 'OK',
+          role: 'confirm',
+          handler: () => {
+            this.handlerMessage = 'Alert confirmed';
+          },
+        },
+      ],
+    });
 
+    await alert.present();
+
+    const { role } = await alert.onDidDismiss();
+    this.roleMessage = `Dismissed with role: ${role}`;
+  }
 }
-

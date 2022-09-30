@@ -1,14 +1,16 @@
 import { Injectable } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AgendaDadosService {
 
-  private Contatos= [
-    {id:1 , nome:'Mãe' , numero:"(35) 9-9999-9999" ,  },
-    {id:2 , nome:'Pai' , numero: "(35) 8-8888-8888" ,  },
 
+  private Contatos= [
+    {id:1 , nome:'Ana' , sobrenome:'Clara' , tipo:'Casa',  numero:"(35) 9999-9999" , email:'seuemail@gmail.com' },
+    {id:2 , nome:'Isadora' , sobrenome:'Reis', tipo:'Celular' , numero: "(35) 8888-8888" , email:'seuemail@gmail.com' },
+    {id:3 , nome:'Julia' , sobrenome:'Reis' , tipo:'Trabalho',  numero:"(35) 7777-7777" , email:'seuemail@gmail.com' },
   ]
 
   constructor() {}

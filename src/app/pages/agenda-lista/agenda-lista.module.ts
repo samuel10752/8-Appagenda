@@ -6,7 +6,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { AgendaListaPageRoutingModule } from './agenda-lista-routing.module';
 
-import { AgendaListaPage } from './agenda-lista.page';
+import { AgendaListaPage } from './agenda-lista.page'
 
 @NgModule({
   imports: [
