@@ -53,6 +53,7 @@ export class AgendaDetalhesPage implements OnInit {
     }
     
   }
+  
 
 
   deletarServico(){

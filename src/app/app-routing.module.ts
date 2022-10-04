@@ -19,10 +19,6 @@ const routes: Routes = [
     path: 'agenda-detalhes/:id',
     loadChildren: () => import('./pages/agenda-detalhes/agenda-detalhes.module').then( m => m.AgendaDetalhesPageModule)
   },
-  {
-    path: 'formulario',
-    loadChildren: () => import('./formulario/formulario/formulario.module').then( m => m.FormularioPageModule)
-  },
 ];
 
 @NgModule({
