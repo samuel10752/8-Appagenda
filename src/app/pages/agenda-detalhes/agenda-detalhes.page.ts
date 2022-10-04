@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { AgendaDadosService } from 'src/app/services/agenda-dados.service';
 
@@ -15,8 +14,10 @@ export class AgendaDetalhesPage implements OnInit {
   public modoDeEdicao = false
   handlerMessage = '';
   roleMessage = '';
+
   
   constructor(
+    private router: Router,
     private route : ActivatedRoute,
     private agenda : AgendaDadosService,
     private alertController: AlertController
@@ -56,6 +57,7 @@ export class AgendaDetalhesPage implements OnInit {
 
   deletarServico(){
     this.agenda.deletaDados(this.contatoselecionado)
+    this.router.navigate(['/agenda-lista/'])
   }
     async presentAlert() {
     const alert = await this.alertController.create({
@@ -65,16 +67,13 @@ export class AgendaDetalhesPage implements OnInit {
           text: 'Cancel',
           role: 'cancel',
           handler: () => {
-            this.handlerMessage = 'Alert canceled';
+            this.handlerMessage = '';
           },
         },
         {
           text: 'OK',
-          role: 'confirm',
-          handler: () => {
-            this.handlerMessage = 'Alert confirmed';
+          handler: () => {this.deletarServico();}
           },
-        },
       ],
     });
 

@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>formulario</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <form #form="ngForm" [formGroup]="clienteForm" (ngSubmit)="enviar()">
+
+    <ion-item>
+      <ion-label position="floating">Nome:</ion-label>
+      <ion-input [(ngModel)]="contatoselecionado.nome"  formControlName="nome"></ion-input>
+      <small class="error" *ngIf="(clienteForm.get('nome').errors?.required || clienteForm.get('nome').errors?.minlength || clienteForm.get('nome').errors?.maxlength) && form.submitted">Nome invalido, Informe um nome de 3 a 15 caracteres</small>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Sobrenome:</ion-label>
+      <ion-input [(ngModel)]="contatoselecionado.sobrenome"  formControlName="sobrenome"></ion-input>
+      <small class="error" *ngIf="(clienteForm.get('sobrenome').errors?.required || clienteForm.get('sobrenome').errors?.minlength || clienteForm.get('sobrenome').errors?.maxlength) && form.submitted">Nome invalido, Informe um nome de 3 a 15 caracteres</small>
+    </ion-item>
+
+    <ion-list>
+      <ion-item>
+        <ion-label position="floating">Tipo de telefone:</ion-label>
+        <ion-select [(ngModel)]="contatoselecionado.tipo"  formControlName="tipo" placeholder="Tipo de telefone ">
+          <ion-select-option value="Celular">Celular</ion-select-option>
+          <ion-select-option value="Casa">Casa</ion-select-option>
+          <ion-select-option value="Trabalho">Trabalho</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+
+
+    <ion-item>
+      <ion-label position="floating">Celular:</ion-label>
+      <ion-input [(ngModel)]="contatoselecionado.numero"  formControlName="numero" ></ion-input>
+      <small class="error" *ngIf="(clienteForm.get('numero').errors?.required || clienteForm.get('numero').errors?.minlength) && form.submitted">Telefone invalido</small>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Email:</ion-label>
+      <ion-input [(ngModel)]="contatoselecionado.email"  formControlName="email" ></ion-input>
+      <small class="error" *ngIf="(clienteForm.get('email').errors?.required || clienteForm.get('email').errors?.email) && form.submitted">Email invalido, Informa um email@teste</small>
+    </ion-item>
+
+
+    <ion-button type="submit">Confirmar</ion-button>
+  </form>
+
+</ion-content>
