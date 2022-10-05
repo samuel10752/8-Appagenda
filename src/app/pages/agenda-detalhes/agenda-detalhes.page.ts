@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { AgendaDadosService } from 'src/app/services/agenda-dados.service';
@@ -14,9 +15,10 @@ export class AgendaDetalhesPage implements OnInit {
   public modoDeEdicao = false
   handlerMessage = '';
   roleMessage = '';
+  userForm : FormGroup
 
-  
   constructor(
+    private formBuilder : FormBuilder,
     private router: Router,
     private route : ActivatedRoute,
     private agenda : AgendaDadosService,
@@ -51,9 +53,7 @@ export class AgendaDetalhesPage implements OnInit {
     this.contatoselecionado= {id , nome: "", numero: 0.0}
     this.modoDeEdicao= true
     }
-    
   }
-  
 
 
   deletarServico(){

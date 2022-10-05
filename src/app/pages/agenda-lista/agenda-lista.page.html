@@ -8,11 +8,17 @@
 </ion-header>
 
 <ion-content>
+  
+
     <ion-list>
       <ion-item *ngFor="let todosdados of todosdados" routerLink="/agenda-detalhes/{{todosdados.id}}">
+        <ion-avatar>
+          <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+        </ion-avatar>
         <ion-label>{{todosdados.nome}}</ion-label>
       </ion-item>
     </ion-list>
+    
     
     <ion-fab id="icon" vertical="top" horizontal="end" slot="fixed" edge="true">
       <ion-fab-button routerLink="/agenda-detalhes/-1">
