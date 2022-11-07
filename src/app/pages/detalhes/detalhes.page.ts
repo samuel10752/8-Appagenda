@@ -69,10 +69,10 @@ export class DetalhesPage implements OnInit {
       })
     
     // captura do id do contato
-    const id : number = Number(this.objRoute.snapshot.paramMap.get('id'))
+    const id : string = String(this.objRoute.snapshot.paramMap.get('id'))
 
     //id maior que 0, contato já existe então é carregado no objeto detalhesContato os valores salvos no array da classe "service"
-    if (id > 0){
+    if (id != 'add'){
       this.detalhesContato = this.objDadosService.FiltraContatosId(id)
 
     }
@@ -88,9 +88,9 @@ export class DetalhesPage implements OnInit {
 
   EncerrarEdicao(){
     
-    const id : number = Number(this.objRoute.snapshot.paramMap.get('id'))
+    const id : string = String(this.objRoute.snapshot.paramMap.get('id'))
     
-    if(id > 0){
+    if(id != 'add'){
       if (this.contatoForm.valid){
         this.modoEdicao = false
       }

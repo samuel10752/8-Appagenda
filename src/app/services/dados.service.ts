@@ -27,13 +27,20 @@ export class DadosService {
   }
 
   EnviarTodosContatos(){
-    return this.contatos
+    //return this.contatos
+
+    let arrayContatos : contato [] = []
+
+    this.storage.forEach((valor : string) => {const contato : contato = JSON.parse(valor); arrayContatos.push(contato)})
+    return arrayContatos
   }
 
-  FiltraContatosId(id : number){
-    const contatoSelecionado = this.contatos.filter(contato => contato.id === id)
-    console.log(contatoSelecionado)
-    return contatoSelecionado[0]
+  FiltraContatosId(id : string){
+  //  const contatoSelecionado = this.contatos.filter(contato => contato.id === id)
+  //  console.log(contatoSelecionado)
+  //  return contatoSelecionado[0]
+
+   console.log(this.storage.get(id))
   }
 
   ExcluirContatoId(contatoRecebido : any){
