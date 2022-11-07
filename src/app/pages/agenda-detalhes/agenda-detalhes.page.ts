@@ -4,6 +4,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { AgendaDadosService } from 'src/app/services/agenda-dados.service';
 
+//import
+import { contato } from 'src/app/models/model';
+import { Guid} from 'guid-typescript'
+
+
 @Component({
   selector: 'app-agenda-detalhes',
   templateUrl: './agenda-detalhes.page.html',

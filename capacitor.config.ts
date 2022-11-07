@@ -2,7 +2,7 @@ import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
   appId: 'io.ionic.starter',
-  appName: 'template black',
+  appName: 'agendaSimples',
   webDir: 'www',
   bundledWebRuntime: false
 };

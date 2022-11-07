@@ -8,16 +8,16 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'contatos',
     pathMatch: 'full'
   },
   {
-    path: 'agenda-lista',
-    loadChildren: () => import('./pages/agenda-lista/agenda-lista.module').then( m => m.AgendaListaPageModule)
+    path: 'contatos',
+    loadChildren: () => import('./pages/contatos/contatos.module').then( m => m.ContatosPageModule)
   },
   {
-    path: 'agenda-detalhes/:id',
-    loadChildren: () => import('./pages/agenda-detalhes/agenda-detalhes.module').then( m => m.AgendaDetalhesPageModule)
+    path: 'detalhes/:id',
+    loadChildren: () => import('./pages/detalhes/detalhes.module').then( m => m.DetalhesPageModule)
   },
 ];
 
