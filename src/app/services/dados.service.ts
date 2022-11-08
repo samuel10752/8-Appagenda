@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { contato } from '../models/model';
 import { Guid } from 'guid-typescript'
 import { Storage } from '@ionic/storage-angular'
+import { async } from '@angular/core/testing';
 
 @Injectable({
   providedIn: 'root'
@@ -35,16 +36,22 @@ export class DadosService {
     return arrayContatos
   }
 
-  FiltraContatosId(id : string){
+  async FiltraContatosId(id : string){
   //  const contatoSelecionado = this.contatos.filter(contato => contato.id === id)
   //  console.log(contatoSelecionado)
   //  return contatoSelecionado[0]
 
-   console.log(this.storage.get(id))
+   return JSON.parse(await this.storage.get(id))
   }
 
-  ExcluirContatoId(contatoRecebido : any){
-    this.contatos.splice(this.contatos.indexOf(contatoRecebido), 1)
+  ExcluirContatoId(id : string){
+   this.storage.remove(id)
+
+  }
+
+  AlterarContatoid(id: string, dadosRecebidos: contato){
+    dadosRecebidos.id = Guid.parse(id)
+    this.storage.set(dadosRecebidos.id.toString(), JSON.stringify(dadosRecebidos))
   }
 
 }

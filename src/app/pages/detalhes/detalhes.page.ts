@@ -73,11 +73,11 @@ export class DetalhesPage implements OnInit {
 
     //id maior que 0, contato já existe então é carregado no objeto detalhesContato os valores salvos no array da classe "service"
     if (id != 'add'){
-      this.detalhesContato = this.objDadosService.FiltraContatosId(id)
+      this.objDadosService.FiltraContatosId(id).then(array => this.detalhesContato  = array)
 
     }
     else{
-      this.detalhesContato = {id, nome : "", sobrenome : "", tipo : "", telefone : "", email : ""}
+      //this.detalhesContato = {id, nome : "", sobrenome : "", tipo : "", telefone : "", email : ""}
       this.modoEdicao = true
     }
   }
@@ -92,6 +92,8 @@ export class DetalhesPage implements OnInit {
     
     if(id != 'add'){
       if (this.contatoForm.valid){
+
+        this.objDadosService.AlterarContatoid(id, this.contatoForm.value)
         this.modoEdicao = false
       }
     }
@@ -105,7 +107,11 @@ export class DetalhesPage implements OnInit {
   }
 
   ExcluirContato(){
-    this.objDadosService.ExcluirContatoId(this.detalhesContato)
+    
+    const id : string = String(this.objRoute.snapshot.paramMap.get('id'))
+
+    this.objDadosService.ExcluirContatoId(id)
   }
+
 
 }
